@@ -1,15 +1,15 @@
-% Function WRITE_LOWNDES
+% Function LOWNDES.WRITE
 % Argument:
 %  infile - string with location
 %  lowndes_data - structure with lowndes data
 %
 % Returns:
 %  Structure with .info for metadata and .strike for strike information
-function write_lowndes( infile, lowndes_data )
+function write( infile, lowndes_data )
 
 fid = fopen( infile, 'wt');
 
-if ~isoctave
+if ~lowndes.isoctave
 % Make sure that the Lowndes output is always closed in MATLAB
 c = onCleanup(@()fclose(fid));
 end
@@ -44,7 +44,7 @@ for index_strike = 1:length(lowndes_data.strike)
     
 end
 
-if isoctave
+if lowndes.isoctave
     fclose(fid);
 end
 

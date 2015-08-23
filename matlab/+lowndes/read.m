@@ -1,14 +1,14 @@
-% Function LOAD_LOWNDES
+% Function LOWNDES.READ
 % Argument:
 %  infile - string with location
 %
 % Returns:
 %  Structure with .info for metadata and .strike for strike information
-function lowndes_data = read_lowndes( infile )
+function lowndes_data = read( infile )
 
 fid = fopen( infile, 'rt');
 
-if ~isoctave
+if ~lowndes.isoctave
 % Make sure that the Lowndes input is always closed in MATLAB
 c = onCleanup(@()fclose(fid));
 end
@@ -68,7 +68,7 @@ else
     lowndes_data.info.bell_count = NaN;
 end
 
-if isoctave
+if lowndes.isoctave
     fclose(fid);
 end
 
