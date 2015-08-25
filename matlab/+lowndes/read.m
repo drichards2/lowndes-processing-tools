@@ -1,4 +1,4 @@
-% Function LOWNDES.READ
+% Function LOWNDES.READ(infile)
 % Argument:
 %  infile - string with location
 %
@@ -49,14 +49,14 @@ while ~feof(fid)
             if (timestamp < last_timestamp)
                 base_offset = base_offset + 65536;
             end
-            strike_time = (timestamp + base_offset);
+            strike_time = (timestamp + base_offset)/1000;
             strike_count = strike_count + 1;
             
             last_timestamp = timestamp;
             
             lowndes_data.strike(strike_count).handstroke = handstroke;
             lowndes_data.strike(strike_count).bell = bell;
-            lowndes_data.strike(strike_count).strike_time = strike_time;
+            lowndes_data.strike(strike_count).actual_time = strike_time;
         end
     end
 end
