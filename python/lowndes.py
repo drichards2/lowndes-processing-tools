@@ -84,7 +84,7 @@ def __bell_to_symbol( bell_number ):
 def write( outfile, lowndes_data ):
     """Write a file in Lowndes format.
     Args:
-        infile (str): Filename of the Lowndes file to read
+        outfile (str): Filename of the Lowndes file to write
         lowndes_data:
 
         lowndes_data can be in several different formats. The preferred
