@@ -1,10 +1,16 @@
 % Function LOWNDES.READ(infile)
 % Argument:
-%  infile - string with location
+%  infile - string with location, OR a lowndes representation structure
 %
 % Returns:
 %  Structure with .info for metadata and .strike for strike information
 function lowndes_data = read( infile )
+
+if isstruct(infile)
+    lowndes_data = infile;
+    return;
+end
+
 
 fid = fopen( infile, 'rt');
 
